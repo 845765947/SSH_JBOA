@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 设置用户界面主题，默认值为XHTML风格 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<!-- 设置可以使用Action的动态调用 默认为false禁用 -->
+	<!-- <constant name="struts.enable.DynamicMethodInvocation" value="true"/> -->
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- Employee员工操作 -->
+		<action name="Employee_*"
+			class="com.oyxy.action.EmployeeAction" method="{1}">
+			<result name="login_error">login.jsp</result>
+			<result name="login_success">index.jsp</result>
+		</action>
+		<!-- Random验证码 -->
+		<action name="random" class="com.oyxy.action.RandomAction">
+			<result type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- 报销单的Action -->
+	<package name="claimVoucher" namespace="/jsp/claim"
+		extends="struts-default">
+		<!-- ClaimVoucher_save报销表操作 -->
+		<action name="claimVoucher_*" method="{1}"
+			class="com.oyxy.action.ClaimVoucherAction">
+			<result name="cla_save" type="redirectAction">
+				claimVoucher_searchClaimVoucher
+			</result>
+			<result name="cla_list">claim_voucher_list.jsp</result>
+			<result name="cla_voucher_view">claim_voucher_view.jsp</result>
+			<result name="cla_update_view">claim_voucher_update.jsp</result>
+			<result name="cla_update" type="redirectAction">
+				claimVoucher_searchClaimVoucher
+			</result>
+			<result name="cla_delete" type="redirectAction">
+				claimVoucher_searchClaimVoucher
+			</result>
+			<result name="cla_check">claim_voucher_check.jsp</result>
+		</action>
+
+		<action name="checkResult_*" method="{1}"
+			class="com.oyxy.action.CheckResultAction">
+			<result name="check_checkClaimVoucher" type="redirectAction">
+				claimVoucher_searchClaimVoucher
+			</result>
+		</action>
+
+	</package>
+
+
+</struts>
