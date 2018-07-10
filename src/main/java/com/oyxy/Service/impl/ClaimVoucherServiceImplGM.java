@@ -21,6 +21,7 @@ public class ClaimVoucherServiceImplGM extends ClaimVoucherServiceImpl {
 
 		if (startDate != null) {
 			hql.append(" and c.createTime >=? ");
+			values.add(startDate);
 		}
 		if (endDate != null) {
 			hql.append(" and c.createTime <=? "); // 设置日期延后

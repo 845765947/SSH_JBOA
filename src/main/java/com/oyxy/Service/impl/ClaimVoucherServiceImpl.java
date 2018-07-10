@@ -58,12 +58,15 @@ public abstract class ClaimVoucherServiceImpl implements ClaimVoucherService {
 		this.ClaimVoucherHqlBuffer(emp, status, startDate, endDate, hql, values);
 		// 把弄好的sql以及参数发送给dao层次进行处理,获取总记录数
 		int count = claimDao.getTotalCount(hql.toString(), values.toArray()).intValue();
+
 		// 设置返回的总记录数
 		request.setTotalCount(count);
+
 		// 如何用户输入页数超出最大页数
 		if (request.getCurrPageNo() > request.getTotalPageCount()) {
 			request.setCurrPageNo(request.getTotalPageCount());
 		}
+
 		// 调用根据子类进行hql的拼接排序
 		this.OrederByHql(hql, status);
 		List<ClaimVoucher> items = claimDao.fingForPage(hql.toString(), request.getCurrPageNo(), request.getPageSize(),
@@ -79,7 +82,7 @@ public abstract class ClaimVoucherServiceImpl implements ClaimVoucherService {
 			StringBuffer hql, List<Object> values);
 
 	// 根据子类进行hql的拼接排序
-	protected abstract void OrederByHql(StringBuffer hql, String status);
+	protected abstract void OrederByHql(StringBuffer hql, String statua);
 
 	@Override
 	public ClaimVoucher findByClaimVoucher(long id) {

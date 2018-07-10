@@ -44,8 +44,8 @@ public class Constants {
 	public static final String LEAVE_MARRIAGE = "婚假";
 	public static final String LEAVE_MATERNITY = "产假";
 	// 请假状态
-	public static final String LEAVESTATUS_APPROVING = "1"; // 待审批
-	public static final String LEAVESTATUS_APPROVED = "2"; // 已审批
-	public static final String LEAVESTATUS_BACK = "3"; // 已打回
+	public static final String LEAVESTATUS_APPROVING = "待审批"; // 待审批
+	public static final String LEAVESTATUS_APPROVED = "已审批"; // 已审批
+	public static final String LEAVESTATUS_BACK = "已打回"; // 已打回
 
 }

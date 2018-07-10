@@ -49,7 +49,7 @@
 							请假事由：<s:property value="leave.reason"/>
 						</td>
 						<td>
-							审批状态：<s:property value="statusMap[leave.status]"/>
+							审批状态：<s:property value="leave.status"/>
 						</td>
 					</tr>
 				</table>

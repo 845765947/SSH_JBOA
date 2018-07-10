@@ -65,22 +65,19 @@ public class ClaimVoucherAction extends BaseAction {
 	public void staticLogin() {
 		// 从session中取出登录对象
 		Employee emp = (Employee) ActionContext.getContext().getSession().get(Constants.AUTH_EMPLOYEE);
-		// 判断是否为空值，如果是空的话就根据用户类型给予默认值
-		if (status == null || status.equals("")) {
-			switch (emp.getSysPosition().getNameCn()) {
-			case Constants.POSITION_FM:
-				this.ClaimVoucherFM();
-				break;
-			case Constants.POSITION_GM:
-				this.ClaimVoucherGM();
-				break;
-			case Constants.POSITION_CASHIER:
-				this.ClaimVoucherCashier();
-				break;
-			default:
-				this.ClaimVoucherStuff();
-				break;
-			}
+		switch (emp.getSysPosition().getNameCn()) {
+		case Constants.POSITION_FM:
+			this.ClaimVoucherFM();
+			break;
+		case Constants.POSITION_GM:
+			this.ClaimVoucherGM();
+			break;
+		case Constants.POSITION_CASHIER:
+			this.ClaimVoucherCashier();
+			break;
+		default:
+			this.ClaimVoucherStuff();
+			break;
 		}
 	}
 
@@ -110,7 +107,6 @@ public class ClaimVoucherAction extends BaseAction {
 
 	// 分页报销单
 	public String searchClaimVoucher() {
-
 		staticLogin();
 		pageSupport = claService.getClaimVoucherPage(this.getLoginEmployee(), status, startDate, endDate, pageNo,
 				pageSize);

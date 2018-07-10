@@ -25,7 +25,8 @@
                   <tr>
                     <td>总金额：<s:property value="claimVoucher.totalAccount"/></td>
                     <td>填报时间：<s:date name="claimVoucher.createTime" format="yyyy-MM-dd HH:mm:ss"/></td>
-                    <td>状态：<s:property value="statusMap[claimVoucher.status]"/></td>
+                    <td>状态：<s:property
+								value="statusMap[claimVoucher.status]" /></td>
                     <td>待处理人：<s:property value="claimVoucher.nextDeal.name"/></td>
                   </tr>
                   <tr>

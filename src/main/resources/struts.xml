@@ -6,6 +6,8 @@
 <struts>
 	<!-- 设置用户界面主题，默认值为XHTML风格 -->
 	<constant name="struts.ui.theme" value="simple"></constant>
+	<!-- 设置常量的方式解决中文乱码 -->
+	<constant name="struts.il8n.encoding" value="UTF-8" />
 	<!-- 设置可以使用Action的动态调用 默认为false禁用 -->
 	<!-- <constant name="struts.enable.DynamicMethodInvocation" value="true"/> -->
 	<package name="default" namespace="/" extends="struts-default">
@@ -51,8 +53,20 @@
 				claimVoucher_searchClaimVoucher
 			</result>
 		</action>
-
 	</package>
 
+
+	<package name="Leave" namespace="/jsp/leave"
+		extends="struts-default">
+		<action name="leave_*" method="{1}"
+			class="com.oyxy.action.LeaveAction">
+			<result name="leave_searchLeave">leave_list.jsp</result>
+			<result name="leave_edit_view">leave_edit.jsp</result>
+			<result name="leave_edit_save" type="redirectAction">leave_searchLeave</result>
+			<result name="leave_view">leave_view.jsp</result>
+			<result name="leave_update_view">leave_check.jsp</result>
+			<result name="leave_update" type="redirectAction">leave_searchLeave</result>
+		</action>
+	</package>
 
 </struts>
